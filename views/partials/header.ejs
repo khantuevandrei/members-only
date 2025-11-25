@@ -1,0 +1,13 @@
+<header>
+  <h1>Members Only</h1>
+  <nav>
+    <a href="/">Home</a> | <a href="/messages">Messages</a> | <% if
+    (currentUser) { %> Logged in as <%= currentUser.username %> |
+    <a href="/logout">Logout</a>
+    <% } else { %>
+    <a href="/login">Login</a> |
+    <a href="/signup">Sign Up</a>
+    <% } %>
+  </nav>
+  <hr />
+</header>
