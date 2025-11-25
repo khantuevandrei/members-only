@@ -7,9 +7,9 @@ function signupGet(req, res) {
 }
 
 async function signupPost(req, res) {
-  const { username, password } = req.body;
+  const { firstName, lastName, email, password } = req.body;
   const hashed = await bcrypt.hash(password, 10);
-  await createUser(username, hashed);
+  await createUser(firstName, lastName, email, hashed);
   res.redirect("/login");
 }
 
