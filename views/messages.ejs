@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Messages</title>
+  </head>
+  <body>
+    <%- include('partials/header') %>
+
+    <h2>Messages</h2>
+
+    <% if (currentUser) { %>
+    <p><a href="/messages/new">Post a new message</a></p>
+    <% } %>
+
+    <ul>
+      <% messages.forEach(message => { %>
+      <li>
+        <strong><%= message.title %></strong> by <%= message.username %>
+        <em>(<%= new Date(message.created_at).toLocaleString() %>)</em>
+        <p><%= message.body %></p>
+      </li>
+      <% }) %>
+    </ul>
+
+    <% if (messages.length === 0) { %>
+    <p>No messages yet. Be the first to post!</p>
+    <% } %>
+  </body>
+</html>

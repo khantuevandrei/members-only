@@ -33,7 +33,8 @@ async function createMessage(userid, title, body) {
   const result = await pool.query(
     `
     INSERT INTO messages (user_id, title, body, created_at)
-    VALUES ($1, $2, $3, NOW() RETURNING *)`,
+    VALUES ($1, $2, $3, NOW()) 
+    RETURNING *`,
     [userid, title, body]
   );
   return result.rows[0];
