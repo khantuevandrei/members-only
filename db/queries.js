@@ -40,10 +40,17 @@ async function createMessage(userid, title, body) {
   return result.rows[0];
 }
 
+async function updateMembership(userid) {
+  await pool.query("UPDATE users SET membership = TRUE WHERE id = $1", [
+    userid,
+  ]);
+}
+
 module.exports = {
   createUser,
   findUserByEmail,
   findUserById,
   getAllMessages,
   createMessage,
+  updateMembership,
 };

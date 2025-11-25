@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Join</title>
+  </head>
+  <body>
+    <%- include('partials/header') %>
+
+    <h2>Join the Club</h2>
+
+    <% if (error) { %>
+    <p style="color: red"><%= error %></p>
+    <% } %> <% if (success) { %>
+    <p style="color: green"><%= success %></p>
+    <% } %>
+
+    <form action="/join" method="POST">
+      <div>
+        <label for="membershipCode">Membership code:</label>
+        <input type="text" name="membershipCode" id="membershipCode" required />
+      </div>
+      <button type="submit">Join Club</button>
+    </form>
+  </body>
+</html>

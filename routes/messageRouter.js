@@ -7,9 +7,28 @@ function isLoggedIn(req, res, next) {
   res.redirect("/login");
 }
 
-messageRouter.get("/", messageController.messagesList);
+function isMember(req, res, next) {
+  if (req.isAuthenticated() && req.user.membership) {
+    return next();
+  }
+  res.render("notMember", {
+    message: "You must be a club member to view messages.",
+  });
+}
 
-messageRouter.get("/new", isLoggedIn, messageController.newMessageGet);
-messageRouter.post("/new", isLoggedIn, messageController.newMessagePost);
+messageRouter.get("/", isLoggedIn, isMember, messageController.messagesList);
+
+messageRouter.get(
+  "/new",
+  isLoggedIn,
+  isMember,
+  messageController.newMessageGet
+);
+messageRouter.post(
+  "/new",
+  isLoggedIn,
+  isMember,
+  messageController.newMessagePost
+);
 
 module.exports = messageRouter;

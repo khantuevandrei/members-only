@@ -3,6 +3,7 @@
   <nav>
     <a href="/">Home</a> | <a href="/messages">Messages</a> | <% if
     (currentUser) { %> Logged in as <%= currentUser.email %> |
+    <a href="/join">Membership</a>
     <a href="/logout">Logout</a>
     <% } else { %>
     <a href="/login">Login</a> |

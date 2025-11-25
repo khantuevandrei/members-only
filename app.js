@@ -9,6 +9,7 @@ require("./passport");
 
 const authRouter = require("./routes/authRouter");
 const messageRouter = require("./routes/messageRouter");
+const joinRouter = require("./routes/joinRouter");
 
 const app = express();
 
@@ -35,6 +36,7 @@ app.use((req, res, next) => {
 
 app.use("/", authRouter);
 app.use("/messages", messageRouter);
+app.use("/join", joinRouter);
 
 app.get("/", (req, res) => res.render("index"));
 
