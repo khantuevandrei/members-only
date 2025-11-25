@@ -2,10 +2,10 @@ const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
 const bcrypt = require("bcryptjs");
 
-const { findUserByUsername, findUserById } = require("../models/userModel");
+const { findUserByUsername, findUserById } = require("./queries");
 
 passport.use(
-  new LocalStrategy(async (findUserByUsername, password, done) => {
+  new LocalStrategy(async (username, password, done) => {
     try {
       const user = await findUserByUsername(username);
       if (!user) return done(null, false, { message: "incorrect username" });
