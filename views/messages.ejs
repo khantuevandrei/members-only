@@ -17,7 +17,7 @@
     <ul>
       <% messages.forEach(message => { %>
       <li>
-        <strong><%= message.title %></strong> by <%= message.username %>
+        <strong><%= message.title %></strong> by <%= message.email %>
         <em>(<%= new Date(message.created_at).toLocaleString() %>)</em>
         <p><%= message.body %></p>
       </li>
